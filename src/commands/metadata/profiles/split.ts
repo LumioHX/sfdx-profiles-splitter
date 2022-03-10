@@ -29,13 +29,13 @@ export default class Split extends SfdxCommand {
     public static description = 'Split profiles into smaller parts.';
 
     public static examples = [`
-        sfdx metadata:profiles:split -i force-app/main/default/profiles -o force-app/main/default/test
+        sfdx metadata:profiles:split -i src-temp/main/default/profiles -o src-temp/main/default/test
         //Splits profiles located in specified input dir and copies them into the output dir.
     `];
 
     protected static flagsConfig = {
-        input: flags.string({char: 'i', default: 'force-app/main/default/profiles', required: true, description: 'the input directory where the full profiles exist.'}),
-        output: flags.string({char: 'o', default: 'force-app/main/default/profiles', required: true, description: 'the output directory to store the chunked profiles.'}),
+        input: flags.string({char: 'i', default: 'src-temp/main/default/profiles', required: true, description: 'the input directory where the full profiles exist.'}),
+        output: flags.string({char: 'o', default: 'src-temp/main/default/profiles', required: true, description: 'the output directory to store the chunked profiles.'}),
         delete: flags.boolean({char: 'd', default: false, description: 'Delete the existing profiles once converted?'}) 
     };
 
@@ -55,7 +55,7 @@ export default class Split extends SfdxCommand {
                 if (fileName.includes('.profile')) {
                     this.ux.log(chalk.bold(chalk.black(('Splitting profile: ' + fileName))));
                     
-                    const dirRoot = location + '/' + fileName.replace('.profile', '');
+                    const dirRoot = location + '/' + fileName.replace('.profile-meta.xml', '');
                     await fs.ensureDir(dirRoot);
     
                     const xml = await fs.readFile(root + '/' + fileName);
