@@ -47,7 +47,7 @@ export default class Merge extends SfdxCommand {
 
     protected static flagsConfig = {
         input: flags.string({char: 'i', default: 'src-temp/main/default/profiles/decomposed', required: true, description: 'the input directory where the splitted profiles exist.'}),
-        output: flags.string({char: 'o', default: 'src-temp/main/default/profiles', required: true, description: 'the output directory to store the full profiles.'}),
+        output: flags.string({char: 'o', default: 'src-temp/main/default/profiles/static', required: true, description: 'the output directory to store the full profiles.'}),
         delete: flags.boolean({char: 'd', default: false, description: 'Delete the splitted profiles once merged?'}) 
     };
 
