@@ -41,13 +41,13 @@ export default class Merge extends SfdxCommand {
     public static description = 'Merge profiles that were split.';
 
     public static examples = [`
-        sfdx metadata:profiles:merge -i src-temp/main/default/profiles -o src-temp/main/default/test
+        sfdx metadata:profiles:merge -i src-main/main/default/profiles -o src-main/main/default/test
         //Merges profiles located in specified input dir and copies them into the output dir.
     `];
 
     protected static flagsConfig = {
-        input: flags.string({char: 'i', default: 'src-temp/main/default/profiles/decomposed', required: true, description: 'the input directory where the splitted profiles exist.'}),
-        output: flags.string({char: 'o', default: 'src-temp/main/default/profiles/static', required: true, description: 'the output directory to store the full profiles.'}),
+        input: flags.string({char: 'i', default: 'src-main/main/default/profiles/decomposed', required: true, description: 'the input directory where the splitted profiles exist.'}),
+        output: flags.string({char: 'o', default: 'src-main/main/default/profiles/static', required: true, description: 'the output directory to store the full profiles.'}),
         delete: flags.boolean({char: 'd', default: false, description: 'Delete the splitted profiles once merged?'}) 
     };
 
